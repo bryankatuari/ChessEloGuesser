@@ -130,6 +130,7 @@ def main():
         print(
             f"Epoch {epoch:02d} | TrainLoss {train_loss:.4f} | ValMAE W {w_mae:.1f} B {b_mae:.1f}"
         )
+    torch.save(model.state_dict(), "elo_guesser.pt")
 
 
 if __name__ == "__main__":

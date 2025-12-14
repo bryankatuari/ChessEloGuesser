@@ -32,11 +32,11 @@ def print_progress(done, total, start_time):
     )
     sys.stdout.flush()
 
-def eval_pgn_to_csv(pgn_path):
+def eval_pgn_to_csv(pgn_path, output_path):
     start_time = time.time()
     games_done = 0
 
-    with open(OUTPUT_CSV, "w", newline="", encoding="utf-8") as csvfile:
+    with open(output_path, "w", newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["moves", "evals", "white_elo", "black_elo"])
 
@@ -87,6 +87,4 @@ def eval_pgn_to_csv(pgn_path):
                 games_done += 1
                 print_progress(games_done, MAX_GAMES, start_time)
 
-    print(f"\n\nFinished. Saved {games_done} games to {OUTPUT_CSV}")
-
-eval_pgn_to_csv(PGN_PATH)
+    print(f"\n\nFinished. Saved {games_done} games to {output_path}")
