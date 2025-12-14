@@ -189,6 +189,7 @@ def train_one_seed(seed: int, epochs: int = 15, patience: int = 4) -> dict:
             f"[seed {seed}] Epoch {epoch:02d} | TrainLoss {train_loss:.4f} | "
             f"ValMAE W {w_mae:.1f} B {b_mae:.1f} ALL {all_mae:.1f}"
         )
+    torch.save(model.state_dict(), "elo_guesser.pt")
 
         # ---- early stopping / checkpoint ----
         if all_mae < best["best_all_mae"] - 0.1:
