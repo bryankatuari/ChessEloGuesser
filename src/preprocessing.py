@@ -4,11 +4,17 @@ import chess.engine
 import csv
 import time
 import sys
+import os
+from dotenv import load_dotenv
 
 ENGINE_DEPTH = 10
 MAX_GAMES = 5000
 PGN_PATH = "data/lichess_db_standard_rated_2018-02.1.pgn"
-STOCKFISH_PATH = "C:\Users\owens\stockfish-windows-x86-64-avx2\stockfish\stockfish-windows-x86-64-avx2.exe"
+
+load_dotenv()
+
+STOCKFISH_PATH = os.getenv("STOCKFISH_PATH")
+
 OUTPUT_CSV = "data/processed_data.csv"
 
 def is_standard_game(game):
