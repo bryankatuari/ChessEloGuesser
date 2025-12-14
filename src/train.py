@@ -62,6 +62,16 @@ def main():
     train_idx = idx[:split]
     val_idx = idx[split:]
 
+    w_base = float(np.mean(white_elo[train_idx]))
+    b_base = float(np.mean(black_elo[train_idx]))
+    print(
+        "Baseline ValMAE:",
+        "W",
+        float(np.mean(np.abs(white_elo[val_idx] - w_base))),
+        "B",
+        float(np.mean(np.abs(black_elo[val_idx] - b_base))),
+    )
+
     ds_train = EloDataset("data/features.npz", yw_all, yb_all, indices=train_idx)
     ds_val = EloDataset("data/features.npz", yw_all, yb_all, indices=val_idx)
 
