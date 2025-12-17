@@ -1,3 +1,4 @@
+# python3 test/parser.py data/example.pgn
 import re
 import argparse
 import chess.pgn
